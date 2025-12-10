@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <record id="hr_cba_syntec" model="hr.cba">
+        <field name="name">Syntec</field>
+    </record>
+</odoo>

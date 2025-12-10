@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_cba_position_form" model="ir.ui.view">
+        <field name="name">hr.cba.position.form</field>
+        <field name="model">hr.cba.position</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="CBA Position">
+                <sheet>
+
+                    <group name="top">
+                        <group name="top_left">
+                            <field name="position"/>
+                            <field name="maximum_first_trial_period"/>
+                            <field name="maximum_trial_period"/>
+                        </group>
+                        <group name="top_right">
+                            <field name="coefficient"/>
+                            <field name="maximum_first_trial_period_month"/>
+                            <field name="maximum_trial_period_month"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_cba_position_tree" model="ir.ui.view">
+        <field name="name">hr.cba.position.list</field>
+        <field name="model">hr.cba.position</field>
+        <field name="arch" type="xml">
+            <list string="CBA Position">
+                <field name="hr_cba_id"/>
+                <field name="position"/>
+                <field name="coefficient"/>
+                <field name="maximum_first_trial_period"/>
+                <field name="maximum_first_trial_period_month"/>
+                <field name="maximum_trial_period"/>
+                <field name="maximum_trial_period_month"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="hr_cba_position_search" model="ir.ui.view">
+        <field name="name">hr.cba.position.search</field>
+        <field name="model">hr.cba.position</field>
+        <field name="arch" type="xml">
+            <search string="CBA Position">
+                <field name="hr_cba_id"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="CBA" name="groupby_hr_cba" domain="[]" context="{'group_by':'hr_cba_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_cba_position_action" model="ir.actions.act_window">
+        <field name="name">CBA Position</field>
+        <field name="res_model">hr.cba.position</field>
+        <field name="view_id" ref="hr_cba_position_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Set a new CBA Position
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_hr_cba_position_act"
+            name="CBA Position"
+            sequence="20"
+            action="hr_cba_position_action"
+            parent="hr_contract.menu_human_resources_configuration_contract"/>
+
+</odoo>

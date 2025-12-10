@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <record id="hr_cba_position_1_1" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">1.1</field>
+        <field name="coefficient">230</field>
+        <field name="maximum_first_trial_period_month">2</field>
+        <field name="maximum_trial_period_month">4</field>
+    </record>
+    
+    <record id="hr_cba_position_1_2" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">1.2</field>
+        <field name="coefficient">250</field>
+        <field name="maximum_first_trial_period_month">2</field>
+        <field name="maximum_trial_period_month">4</field>
+    </record>
+    
+    <record id="hr_cba_position_1_3" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">1.3</field>
+        <field name="coefficient">270</field>
+        <field name="maximum_first_trial_period_month">2</field>
+        <field name="maximum_trial_period_month">4</field>
+    </record>
+    
+    <record id="hr_cba_position_2_1" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">2.1</field>
+        <field name="coefficient">310</field>
+        <field name="maximum_first_trial_period_month">3</field>
+        <field name="maximum_trial_period_month">6</field>
+    </record>
+    
+    <record id="hr_cba_position_2_2" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">2.2</field>
+        <field name="coefficient">330</field>
+        <field name="maximum_first_trial_period_month">3</field>
+        <field name="maximum_trial_period_month">6</field>
+    </record>
+    
+    <record id="hr_cba_position_2_3" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">2.3</field>
+        <field name="coefficient">350</field>
+        <field name="maximum_first_trial_period_month">3</field>
+        <field name="maximum_trial_period_month">6</field>
+    </record>
+    
+    <record id="hr_cba_position_3_1" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">3.1</field>
+        <field name="coefficient">400</field>
+        <field name="maximum_first_trial_period_month">4</field>
+        <field name="maximum_trial_period_month">8</field>
+    </record>
+    
+    <record id="hr_cba_position_3_2" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">3.2</field>
+        <field name="coefficient">450</field>
+        <field name="maximum_first_trial_period_month">4</field>
+        <field name="maximum_trial_period_month">8</field>
+    </record>
+    
+    <record id="hr_cba_position_3_3" model="hr.cba.position">
+        <field name="hr_cba_id" ref="hr_cba_syntec"/>
+        <field name="position">3.3</field>
+        <field name="coefficient">500</field>
+        <field name="maximum_first_trial_period_month">4</field>
+        <field name="maximum_trial_period_month">8</field>
+    </record>
+</odoo>

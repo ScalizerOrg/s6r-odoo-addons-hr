@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_cba_system,access_hr_cba system,s6r_hr_collective_agreement.model_hr_cba,base.group_system,1,1,1,1
+access_hr_cba_user,hr_cba user,s6r_hr_collective_agreement.model_hr_cba,base.group_user,1,0,0,0
+access_hr_cba_position_system,access_hr_cba_position system,s6r_hr_collective_agreement.model_hr_cba_position,base.group_system,1,1,1,1
+access_hr_cba_position_user,hr_cba_position user,s6r_hr_collective_agreement.model_hr_cba_position,base.group_user,1,0,0,0
