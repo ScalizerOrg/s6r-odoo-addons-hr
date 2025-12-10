@@ -20,7 +20,6 @@ class HrCbaPosition(models.Model):
     display_name = fields.Char(compute='_compute_display_name', store=True)
 
     def _compute_display_name(self):
-        super()._compute_display_name()
         for rec in self:
             rec.display_name = f"{rec.position} - {rec.coefficient}"
 
