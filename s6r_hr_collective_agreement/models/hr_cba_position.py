@@ -19,6 +19,7 @@ class HrCbaPosition(models.Model):
     maximum_trial_period_month = fields.Integer()
     display_name = fields.Char(compute='_compute_display_name', store=True)
 
+    @api.depends('position', 'coefficient')
     def _compute_display_name(self):
         for rec in self:
             rec.display_name = f"{rec.position} - {rec.coefficient}"
