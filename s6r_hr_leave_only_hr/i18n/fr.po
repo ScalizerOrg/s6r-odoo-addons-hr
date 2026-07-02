@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s6r_hr_leave_only_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-10 09:44+0000\n"
+"PO-Revision-Date: 2025-12-10 09:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s6r_hr_leave_only_hr
+#: model:ir.model.fields,field_description:s6r_hr_leave_only_hr.field_hr_leave_type__hr_only
+msgid "HR Only"
+msgstr "RH uniquement"
+
+#. module: s6r_hr_leave_only_hr
+#: model:ir.model.fields,field_description:s6r_hr_leave_only_hr.field_hr_leave__hr_only_visible
+msgid "Hr Only Visible"
+msgstr "Visible RH uniquement"
+
+#. module: s6r_hr_leave_only_hr
+#. odoo-python
+#: code:addons/s6r_hr_leave_only_hr/models/hr_leave.py:0
+msgid ""
+"This leave type can only be used by HR managers. Please contact your HR "
+"department."
+msgstr ""
+"Ce type de congé est réservé aux gestionnaires RH. Veuillez contacter votre "
+"service RH."
+
+#. module: s6r_hr_leave_only_hr
+#: model:ir.model,name:s6r_hr_leave_only_hr.model_hr_leave
+msgid "Time Off"
+msgstr "Congés"
+
+#. module: s6r_hr_leave_only_hr
+#: model:ir.model,name:s6r_hr_leave_only_hr.model_hr_leave_type
+msgid "Time Off Type"
+msgstr "Type de congés"
+
+#. module: s6r_hr_leave_only_hr
+#: model:ir.model.fields,help:s6r_hr_leave_only_hr.field_hr_leave_type__hr_only
+msgid ""
+"When enabled, this leave type is reserved for HR managers only and will not "
+"appear in the employee leave request form."
+msgstr ""
+"Lorsque cette option est activée, ce type de congé est réservé aux "
+"gestionnaires RH uniquement et n'apparaîtra pas dans le formulaire de "
+"demande de congé de l'employé."
