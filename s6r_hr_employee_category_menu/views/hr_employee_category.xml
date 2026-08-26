@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2026 Scalizer (<https://www.scalizer.fr>)
+  ~ License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.html).
+  -->
+<odoo>
+
+    <!-- The native menu is reserved to the developer group (base.group_no_one): it
+         is opened up to the HR users. Reusing the native menu rather than adding one
+         of ours avoids a duplicate entry for whoever runs in developer mode — the
+         flip side being that an uninstall does not put the group back. -->
+    <record id="hr.menu_view_employee_category_form" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2026 Scalizer (<https://www.scalizer.fr>)
+  ~ License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.html).
+  -->
+<odoo>
+    <record id="hr_leave_type_view_form_employee_category" model="ir.ui.view">
+        <field name="name">hr.leave.type.view.form.employee.category</field>
+        <field name="model">hr.leave.type</field>
+        <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+        <field name="arch" type="xml">
+            <field name="responsible_ids" position="after">
+                <field name="restricted_category_ids"
+                       widget="many2many_tags"
+                       options="{'color_field': 'color'}"
+                       placeholder="No restriction"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2026 Scalizer (<https://www.scalizer.fr>)
+  ~ License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.html).
+  -->
+<odoo>
+
+    <!-- The native allocation form carries no domain on the time off type: the one
+         added here is the tag restriction alone. -->
+    <record id="hr_leave_allocation_view_form_employee_category" model="ir.ui.view">
+        <field name="name">hr.leave.allocation.view.form.employee.category</field>
+        <field name="model">hr.leave.allocation</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form"/>
+        <field name="arch" type="xml">
+            <field name="holiday_status_id" position="before">
+                <field name="allowed_holiday_status_ids" invisible="1"/>
+            </field>
+            <field name="holiday_status_id" position="attributes">
+                <attribute name="domain">[('id', 'in', allowed_holiday_status_ids)]</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
