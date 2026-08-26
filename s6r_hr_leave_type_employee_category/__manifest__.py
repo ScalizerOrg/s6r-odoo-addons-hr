@@ -18,9 +18,16 @@ This module adds a "Restricted to Tags" field on time off types. A type carrying
 tags is only available to the employees holding at least one of them:
 
 * the time off and the allocation forms only offer the types the employee is
-  entitled to;
+  entitled to, and only those of the company of that employee, the time off type
+  search being filtered on the employee those forms already put in its context (no
+  domain of the native views is replaced, so a module narrowing that same field down
+  keeps working);
 * a server-side constraint refuses any other crossing, whatever creates it
-  (import, custom wizard, another module), so the restriction cannot be bypassed.
+  (import, custom wizard, another module), so the restriction cannot be bypassed;
+* the batch generation wizards sort the employees out instead of stopping on the
+  first one at fault: named employees the type is not open to are refused with all
+  of them listed, a whole company, department or tag only generates for the part
+  of that population the type concerns.
 
 The employee tags list itself is only reachable from an employee form: install
 s6r_hr_employee_category_menu to get it as a menu of its own.
@@ -37,8 +44,6 @@ loses a tag are left untouched.
     ],
     'data': [
         'views/hr_leave_type.xml',
-        'views/hr_leave.xml',
-        'views/hr_leave_allocation.xml',
     ],
     'auto_install': False,
     'installable': True,

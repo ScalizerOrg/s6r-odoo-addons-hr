@@ -6,46 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0+e\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-26 09:48+0000\n"
+"PO-Revision-Date: 2026-08-26 09:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: s6r_hr_leave_type_employee_category
-#: model:ir.model.fields,field_description:s6r_hr_leave_type_employee_category.field_hr_leave__allowed_holiday_status_ids
-#: model:ir.model.fields,field_description:s6r_hr_leave_type_employee_category.field_hr_leave_allocation__allowed_holiday_status_ids
-#: model:ir.model.fields,field_description:s6r_hr_leave_type_employee_category.field_hr_leave_category_restriction_mixin__allowed_holiday_status_ids
-msgid "Allowed Time Off Types"
-msgstr "Types de congés autorisés"
-
-#. module: s6r_hr_leave_type_employee_category
-#: model:ir.model.fields,field_description:s6r_hr_leave_type_employee_category.field_hr_leave_type__restricted_category_ids
-msgid "Restricted to Tags"
-msgstr "Réservé aux étiquettes"
-
-#. module: s6r_hr_leave_type_employee_category
-#: model:ir.model.fields,help:s6r_hr_leave_type_employee_category.field_hr_leave_type__restricted_category_ids
-msgid ""
-"Employee tags allowed to use this time off type. An employee holding at least "
-"one of them may request it; the others may not. Leave empty for no "
-"restriction at all."
-msgstr ""
-"Étiquettes employé autorisées à utiliser ce type de congé. Un employé portant "
-"au moins l'une d'elles peut le demander, les autres non. Laisser vide pour "
-"aucune restriction."
-
-#. module: s6r_hr_leave_type_employee_category
-#: model:ir.model.fields,help:s6r_hr_leave_type_employee_category.field_hr_leave__allowed_holiday_status_ids
-#: model:ir.model.fields,help:s6r_hr_leave_type_employee_category.field_hr_leave_allocation__allowed_holiday_status_ids
-#: model:ir.model.fields,help:s6r_hr_leave_type_employee_category.field_hr_leave_category_restriction_mixin__allowed_holiday_status_ids
-msgid ""
-"Technical field: the time off types the tags of the employee give access to. "
-"Drives the domain of the time off type on the form."
-msgstr ""
-"Champ technique : les types de congés auxquels les étiquettes de l'employé "
-"donnent accès. Pilote le domaine du type de congé sur le formulaire."
 
 #. module: s6r_hr_leave_type_employee_category
 #. odoo-python
@@ -58,9 +26,70 @@ msgstr ""
 "\"%(leave_type)s\" (%(tags)s)."
 
 #. module: s6r_hr_leave_type_employee_category
+#. odoo-python
+#: code:addons/s6r_hr_leave_type_employee_category/wizard/hr_leave_generate_multi_restriction.py:0
+msgid "%(names)s and %(count)s others"
+msgstr "%(names)s et %(count)s autres"
+
+#. module: s6r_hr_leave_type_employee_category
+#: model:ir.model,name:s6r_hr_leave_type_employee_category.model_hr_leave_generate_multi_restriction_mixin
+msgid "Employee Tag Restriction on the Batch Generation Wizards"
+msgstr "Restriction par étiquette employé sur les assistants de génération en masse"
+
+#. module: s6r_hr_leave_type_employee_category
+#: model:ir.model.fields,help:s6r_hr_leave_type_employee_category.field_hr_leave_type__restricted_category_ids
+msgid ""
+"Employee tags allowed to use this time off type. An employee holding at "
+"least one of them may request it; the others may not. Leave empty for no "
+"restriction at all."
+msgstr ""
+"Étiquettes employé autorisées à utiliser ce type de congé. Un employé "
+"portant au moins l'une d'elles peut le demander, les autres non. Laisser "
+"vide pour aucune restriction."
+
+#. module: s6r_hr_leave_type_employee_category
+#: model:ir.model,name:s6r_hr_leave_type_employee_category.model_hr_leave_allocation_generate_multi_wizard
+msgid "Generate time off allocations for multiple employees"
+msgstr "Générer des allocations de congés pour plusieurs employés"
+
+#. module: s6r_hr_leave_type_employee_category
+#: model:ir.model,name:s6r_hr_leave_type_employee_category.model_hr_leave_generate_multi_wizard
+msgid "Generate time off for multiple employees"
+msgstr "Générer des congés pour plusieurs employés"
+
+#. module: s6r_hr_leave_type_employee_category
 #: model_terms:ir.ui.view,arch_db:s6r_hr_leave_type_employee_category.hr_leave_type_view_form_employee_category
 msgid "No restriction"
 msgstr "Aucune restriction"
+
+#. module: s6r_hr_leave_type_employee_category
+#. odoo-python
+#: code:addons/s6r_hr_leave_type_employee_category/wizard/hr_leave_generate_multi_restriction.py:0
+msgid ""
+"None of the %(count)s employees selected holds any of the employee tags the "
+"time off type \"%(leave_type)s\" is reserved to (%(tags)s): there is nothing"
+" to generate."
+msgstr ""
+"Aucun des %(count)s employés sélectionnés ne porte l'une des étiquettes "
+"employé auxquelles le type de congé \"%(leave_type)s\" est réservé "
+"(%(tags)s) : il n'y a rien à générer."
+
+#. module: s6r_hr_leave_type_employee_category
+#: model:ir.model.fields,field_description:s6r_hr_leave_type_employee_category.field_hr_leave_type__restricted_category_ids
+msgid "Restricted to Tags"
+msgstr "Réservé aux étiquettes"
+
+#. module: s6r_hr_leave_type_employee_category
+#. odoo-python
+#: code:addons/s6r_hr_leave_type_employee_category/wizard/hr_leave_generate_multi_restriction.py:0
+msgid ""
+"The time off type \"%(leave_type)s\" is reserved to the employee tags "
+"%(tags)s. %(count)s of the selected employees hold none of them: "
+"%(employees)s"
+msgstr ""
+"Le type de congé \"%(leave_type)s\" est réservé aux étiquettes employé "
+"%(tags)s. %(count)s des employés sélectionnés n'en portent aucune : "
+"%(employees)s"
 
 #. module: s6r_hr_leave_type_employee_category
 #: model:ir.model,name:s6r_hr_leave_type_employee_category.model_hr_leave

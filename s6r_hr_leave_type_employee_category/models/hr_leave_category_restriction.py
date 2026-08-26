@@ -1,7 +1,7 @@
 # Copyright 2026 Scalizer (<https://www.scalizer.fr>)
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.html).
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
 from odoo.exceptions import ValidationError
 
 
@@ -11,58 +11,26 @@ class HrLeaveCategoryRestrictionMixin(models.AbstractModel):
     Both models carry the same two fields (``employee_id`` and
     ``holiday_status_id``) and owe the user the same behaviour: only offer the
     types their tags entitle them to, and refuse the others server-side.
+
+    The offering itself is not done here: it belongs to
+    ``hr.leave.type._search``, which both forms reach through the ``employee_id``
+    they already put in the context of the type field.
     """
 
     _name = "hr.leave.category.restriction.mixin"
     _description = "Time Off Type Restriction by Employee Tag"
-
-    allowed_holiday_status_ids = fields.Many2many(
-        "hr.leave.type",
-        string="Allowed Time Off Types",
-        compute="_compute_allowed_holiday_status_ids",
-        help=(
-            "Technical field: the time off types the tags of the employee give "
-            "access to. Drives the domain of the time off type on the form."
-        ),
-    )
-
-    @api.depends("employee_id", "employee_id.category_ids")
-    @api.depends_context(
-        "allowed_company_ids", "company", "uid", "employee_id", "default_employee_id"
-    )
-    def _compute_allowed_holiday_status_ids(self):
-        """Compute the time off types the employee of each record is entitled to.
-
-        The context dependencies are not decoration: the search below answers with what
-        the current user may read in the companies currently active, and the core
-        recomputes fields of a time off in a ``with_company(employee_company_id)``
-        environment, which *adds* the company of the employee to the active ones. Without
-        them, the ORM caches one value for every context: the wider one leaks into the
-        narrower, the form ends up offering a type of a company that is not active, and
-        reading it back raises an access error on the multi-company record rule.
-
-        ``employee_id`` and ``default_employee_id`` are the keys hr_holidays itself
-        filters its time off types on (a module may narrow them down per employee, as the
-        SAFE overtime counters do), so the result depends on those too.
-
-        :returns: None
-        """
-        leave_types = self.env["hr.leave.type"].search([])
-        for record in self:
-            record.allowed_holiday_status_ids = leave_types.filtered(
-                lambda leave_type, record=record: leave_type._is_allowed_for_employee(
-                    record.employee_id
-                )
-            )
 
     @api.model
     def _drop_unallowed_default_type(self, defaults):
         """Drop a default time off type the employee is not offered.
 
         The core fills the field in by taking the first type its own search returns
-        (``hr.leave.default_get``, ``hr.leave.allocation._default_holiday_status_id``),
-        which knows nothing of the tags: the form would open on a type the employee is not
-        entitled to, absent from the very list it offers next to it.
+        (``hr.leave.default_get``, ``hr.leave.allocation._default_holiday_status_id``).
+        That search is filtered by ``hr.leave.type._search`` whenever the context
+        designates an employee, but the plain *New* of the Time Off list carries no such
+        context: the core resolves the employee afterwards, and the form would open on a
+        type the employee is not entitled to, absent from the very list it offers next to
+        it.
 
         Called by the ``default_get`` of the models rather than carried by this mixin: the
         core reaches the mixin through its own ``super()`` call, hence before it picks the
@@ -82,8 +50,7 @@ class HrLeaveCategoryRestrictionMixin(models.AbstractModel):
         if not employee:
             return defaults
         LeaveType = self.env["hr.leave.type"].with_context(employee_id=employee.id)
-        offered = LeaveType.search([("id", "=", defaults["holiday_status_id"])])
-        if offered and offered._is_allowed_for_employee(employee):
+        if LeaveType.search([("id", "=", defaults["holiday_status_id"])]):
             return defaults
         defaults["holiday_status_id"] = False
         return defaults
@@ -112,7 +79,7 @@ class HrLeaveCategoryRestrictionMixin(models.AbstractModel):
     def _check_leave_type_category(self):
         """Refuse a type reserved to tags the employee does not hold.
 
-        The real lock, the domain on the form being only a convenience: an import,
+        The real lock, the filtering of the form being only a convenience: an import,
         a custom wizard or another module goes through this constraint just the
         same.
 
