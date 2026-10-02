@@ -155,6 +155,12 @@ class HrLeaveType(models.Model):
         counters, whose lookups target a company that may not even be among the ones the
         user is allowed.
 
+        A domain naming ``id`` is in the same case: the ORM reads the fields of records
+        already handed out by an earlier search through ``[("id", "in", ids)]``
+        (``fetch``), and narrowing that read down to the company of the employee turns
+        the types the search legitimately returned, from another allowed company, into
+        a spurious access error.
+
         :param domain: the domain the search was called with
         :type domain: list
         :returns: True when the domain constrains the company itself
@@ -163,6 +169,6 @@ class HrLeaveType(models.Model):
         return any(
             isinstance(leaf, (list, tuple))
             and len(leaf) == 3
-            and str(leaf[0]).split(".")[0] == "company_id"
+            and str(leaf[0]).split(".")[0] in ("company_id", "id")
             for leaf in domain
         )

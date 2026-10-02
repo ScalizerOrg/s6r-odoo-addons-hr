@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.html).
 {
     'name': 'Scalizer HR Leave Type Employee Tags',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'author': 'Scalizer',
     'website': 'https://www.scalizer.fr',
     'summary': "Restrict time off types to employees holding given tags",
